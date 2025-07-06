@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Truecaller Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login with Truecaller</title>
   <script src="https://sdk.truecaller.com/sdk/v1.5/truecaller-sdk.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    #truecaller-button {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <h1>Login with Truecaller</h1>
+  <p>Click the button below to securely log in using your Truecaller profile.</p>
 
   <div id="truecaller-button"></div>
 
@@ -24,17 +35,17 @@
       },
       sdkEvents: {
         onInit: function (response) {
-          console.log("Truecaller SDK init:", response);
+          console.log("Truecaller SDK Initialized:", response);
         },
         onSuccess: function (response) {
-          // This will NOT fire if using redirect/callback
-          console.log("Success:", response);
+          // Not used here, response comes via redirect
+          console.log("Login Success:", response);
         },
         onFailure: function (error) {
-          console.error("Error:", error);
+          console.error("Login Error:", error);
         }
       },
-      requestNonce: "123456", // random string
+      requestNonce: "xyz123456789", // You can generate a unique ID each time
       apiKey: "OCR1E1b4157fe1432468cbd2cf564be514f20",
       redirectURI: "https://samarth.netlify.app/Truecaller"
     }).setupUI(document.getElementById("truecaller-button"));
