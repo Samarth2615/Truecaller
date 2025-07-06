@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Truecaller Response</title>
+</head>
+<body>
+  <h2>Truecaller Login Response</h2>
+  <pre id="responseBox">Waiting for response...</pre>
+
+  <script>
+    // Get response from URL hash
+    const hash = window.location.hash.substring(1);
+    const params = new URLSearchParams(hash);
+    const data = {};
+
+    for (const [key, value] of params.entries()) {
+      data[key] = value;
+    }
+
+    document.getElementById('responseBox').textContent = JSON.stringify(data, null, 2);
+  </script>
+</body>
+</html>
