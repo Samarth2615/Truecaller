@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truecaller Login</title>
+  <script src="https://sdk.truecaller.com/sdk/v1.5/truecaller-sdk.js"></script>
+</head>
+<body>
+  <h1>Login with Truecaller</h1>
+
+  <div id="truecaller-button"></div>
+
+  <script>
+    new window.TruecallerSDK({
+      sdkOptions: {
+        consentMode: 'popup',
+        buttonType: 'full',
+        buttonSize: 'large',
+        showCTA: true,
+        buttonColor: 'blue',
+        textColor: 'white',
+        logo: 'default',
+      },
+      sdkEvents: {
+        onInit: function (response) {
+          console.log("Truecaller SDK init:", response);
+        },
+        onSuccess: function (response) {
+          // This will NOT fire if using redirect/callback
+          console.log("Success:", response);
+        },
+        onFailure: function (error) {
+          console.error("Error:", error);
+        }
+      },
+      requestNonce: "123456", // random string
+      apiKey: "OCR1E1b4157fe1432468cbd2cf564be514f20",
+      redirectURI: "https://samarth.netlify.app/Truecaller"
+    }).setupUI(document.getElementById("truecaller-button"));
+  </script>
+</body>
+</html>
